@@ -13,13 +13,6 @@ function App() {
     .then(data => setListings(data));
   }, []);
 
-  function toggleFavorite(listing, isFavorite) {
-    console.log("toggleFavorite()", listing.favorite);
-    // console.log("listing before toggleFavorite", listing.favorite)
-    listings.map(l => listing.id === l.id ? {...l, favorite: isFavorite} : l)
-    // console.log("listing after toggleFavorite", listing.favorite)
-  }
-
   function removeListing(listing) {
     setListings(listings.filter(l => l.id !== listing.id));
   }
@@ -28,7 +21,6 @@ function App() {
     <div className="app">
       <Header />
       <ListingsContainer listings={listings} 
-                          toggleFavorite={toggleFavorite} 
                           removeListing={removeListing} 
       />
     </div>
