@@ -1,6 +1,8 @@
 import React from "react";
 
-function ListingCard({listing}) {
+function ListingCard({listing, toggleFavorite, removeListing}) {
+  console.log("ListingCard()", listing.favorite)
+
   return (
     <li className="card">
       <div className="image">
@@ -8,14 +10,14 @@ function ListingCard({listing}) {
         <img src={listing.image} alt={listing.description} />
       </div>
       <div className="details">
-        {true ? (
-          <button className="emoji-button favorite active">★</button>
+        {listing.favorite ? (
+          <button className="emoji-button favorite active" onClick={()=> {toggleFavorite(listing, false)}}>★</button>
         ) : (
-          <button className="emoji-button favorite">☆</button>
+          <button className="emoji-button favorite" onClick={()=>{toggleFavorite(listing, true)}}>☆</button>
         )}
         <strong>{listing.description}</strong>
         <span> · {listing.location}</span>
-        <button className="emoji-button delete">🗑</button>
+        <button className="emoji-button delete" onClick={() => {removeListing(listing)}}>🗑</button>
       </div>
     </li>
   );
