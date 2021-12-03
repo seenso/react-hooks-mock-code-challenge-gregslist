@@ -22,22 +22,10 @@ function App() {
     setSearch(inputText);
   }
 
-  function filterListings() { // too long to write within component so writing out here.
-    console.log("filterListings() has been invoked from App.js", listings);
-    if (search.length > 0) {
-      // setListings(listings.filter( l => l.description.toLowerCase().includes(search.toLowerCase())));
-      return listings.filter(listing => listing.description.toLowerCase().includes(search.toLowerCase()))
-    } else {
-      // setListings(listings);
-      return listings;
-    }
-  }
-
   return (
     <div className="app">
       <Header formInput={formInput}/>
-      <ListingsContainer listings={filterListings()} 
-                          filterListings={filterListings}
+      <ListingsContainer listings={listings.filter(listing => listing.description.toLowerCase().includes(search.toLowerCase()))} 
                           removeListing={removeListing} 
       />
     </div>
