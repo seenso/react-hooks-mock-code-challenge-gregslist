@@ -1,8 +1,7 @@
 import React from "react";
 import ListingCard from "./ListingCard";
 
-function ListingsContainer({listings, filterListings, removeListing}) {
-  // console.log("FILTERLISTINGS", filterListings);
+function ListingsContainer({listings, removeListing}) {
   return (
     <main>
       <ul className="cards">
