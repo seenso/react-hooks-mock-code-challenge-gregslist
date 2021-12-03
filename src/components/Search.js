@@ -1,19 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 
-function Search() {
+function Search({formInput}) {
+  const [form, setForm] = useState(""); //form val will change while in Search component so created state here.
+
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("submitted");
+    formInput(form); //passing the info back up to App component
+    console.log("submitted", form);
   }
 
   return (
-    <form className="searchbar" onSubmit={handleSubmit}>
+    <form className="searchbar" onSubmit={(e) => handleSubmit(e)}>
       <input
         type="text"
         id="search"
         placeholder="search free stuff"
-        value={""}
-        onChange={(e) => console.log(e.target.value)}
+        value={form}
+        onChange={(e) => setForm(e.target.value)} //setting form value so it can be sent back up via formInput
       />
       <button type="submit">🔍</button>
     </form>

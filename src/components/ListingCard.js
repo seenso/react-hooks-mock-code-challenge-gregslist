@@ -1,8 +1,6 @@
 import React, {useState} from "react";
 
 function ListingCard({listing, removeListing}) {
-  console.log("ListingCard()", listing.favorite)
-
   const [favorite, setFavorite] = useState(false)
 
   function toggleFavorite() {setFavorite(!favorite)}
